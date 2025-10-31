@@ -61,10 +61,10 @@ public class UserInterface {
                   case 1:
                       processGetByPriceRequest();
                       break;
-              }
-//                case 2:
-//                    processGetByMakeModelRequest();
-//                    break;
+
+                  case 2:
+                      processGetByMakeModelRequest();
+                      break;
 //                case 3:
 //                    processGetByYearRequest();
 //                    break;
@@ -92,8 +92,28 @@ public class UserInterface {
 //                    break;
 //                default:
 //                    System.out.println("Invalid choice. Please try again.");
-//            }
+              }
         }
+    }
+
+    private void processGetByMakeModelRequest() {
+        System.out.println("Enter Make: ");
+        while (!read.hasNextLine()){
+            System.out.println("Invalid input please enter the make of the car");
+            System.out.println("Enter Make: ");
+            read.nextLine().toLowerCase();
+        }
+        String make = read.nextLine().toLowerCase();
+
+        System.out.println("Enter Model: ");
+        while (!read.hasNextLine()){
+            System.out.println("Invalid input please enter the make of the car");
+            System.out.println("Enter Model: ");
+            read.nextLine();
+        }
+        String model = read.nextLine().toLowerCase();
+        ArrayList<Vehicle> vehicles = dealership.getVehiclesByMakeModel(make, model);
+        displayVehicles(vehicles);
     }
 
     private void processGetByPriceRequest() {

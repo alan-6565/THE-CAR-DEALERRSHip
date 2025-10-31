@@ -1,11 +1,6 @@
 package com.Dealer;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Dealership {
     private String name;
@@ -54,10 +49,6 @@ public class Dealership {
     }
 
     //Methods
-    public ArrayList<Vehicle> getAllVehicles(ArrayList<Vehicle> List){
-        return inventory;
-    }
-
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
         ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
         for (Vehicle vehicle : inventory) {
@@ -67,4 +58,15 @@ public class Dealership {
         }
         return filteredVehicles;
     }
+
+    public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model){
+        ArrayList<Vehicle> filteredVehicles = new ArrayList<>();
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getMake().toLowerCase().equals(make) && vehicle.getModel().toLowerCase().equals(model)){
+                filteredVehicles.add(vehicle);
+            }
+        }
+       return filteredVehicles;
+    }
+
 }
