@@ -65,15 +65,15 @@ public class UserInterface {
                   case 2:
                       processGetByMakeModelRequest();
                       break;
-//                case 3:
-//                    processGetByYearRequest();
-//                    break;
-//                case 4:
-//                    processGetHyColorRequest();
-//                    break;
-//                case 5:
-//                    processGetByMileageRequest();
-//                    break;
+                  case 3:
+                      processGetByYearRequest();
+                      break;
+                  case 4:
+                      processGetByColorRequest();
+                      break;
+                  case 5:
+                      processGetByMileageRequest();
+                      break;
 //                case 6:
 //                    processGetByVehicleTypeRequest();
 //                    break;
@@ -94,6 +94,69 @@ public class UserInterface {
 //                    System.out.println("Invalid choice. Please try again.");
               }
         }
+    }
+
+    private void processGetByMileageRequest() {
+        System.out.println("Enter min Mileage: ");
+        while (!read.hasNextInt()){
+            System.out.println("Invalid input please enter the minimum Mileage of the car");
+            System.out.println("Enter min Mileage: ");
+            read.next();
+        }
+
+        int min = read.nextInt();
+        read.nextLine();
+
+        System.out.println("Enter max Mileage: ");
+        while (!read.hasNextInt()){
+            System.out.println("Invalid input please enter the maximum Mileage of the car");
+            System.out.println("Enter max Mileage: ");
+            read.next();
+        }
+
+        int max = read.nextInt();
+        read.nextLine();
+
+        ArrayList<Vehicle> vehicles = dealership.getVehicleByMileage(min, max);
+        displayVehicles(vehicles);
+    }
+
+    private void processGetByColorRequest() {
+        System.out.println("Enter Color: ");
+        while (!read.hasNextLine()){
+            System.out.println("Invalid input please enter the Color of the car");
+            System.out.println("Enter Color: ");
+            read.nextLine().toLowerCase();
+        }
+        String color = read.nextLine().toLowerCase();
+
+        ArrayList<Vehicle> vehicles = dealership.getVehiclesByColor(color);
+        displayVehicles(vehicles);
+    }
+
+    private void processGetByYearRequest() {
+        System.out.println("Enter min Year: ");
+        while (!read.hasNextInt()){
+            System.out.println("Invalid input please enter the minimum Year of the car");
+            System.out.println("Enter min Year: ");
+            read.next();
+        }
+
+        int min = read.nextInt();
+        read.nextLine();
+
+        System.out.println("Enter max Year: ");
+        while (!read.hasNextInt()){
+            System.out.println("Invalid input please enter the maximum Year of the car");
+            System.out.println("Enter max Year: ");
+            read.next();
+        }
+
+        int max = read.nextInt();
+        read.nextLine();
+
+        ArrayList<Vehicle> vehicles = dealership.getVehiclesByYear(min, max);
+        displayVehicles(vehicles);
     }
 
     private void processGetByMakeModelRequest() {
